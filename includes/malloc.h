@@ -9,8 +9,31 @@
 # define HEAP_SHIFT(start) ((void *)start + sizeof(t_heap))
 # define BLOCK_SHIFT(start) ((void *)start + sizeof(t_block))
 
-extern pthread_mutex_t g_malloc_mutex;
+extern pthread_mutex_t 	g_malloc_mutex;
+extern t_heap_chunk		*g_heap_anchor;
 
-void free(void *ptr);
-void *malloc(size_t size);
-void *realloc(void *ptr, size_t size);
+typedef enum	e_chunk_group {
+	TINY,
+	SMALL,
+	LARGE
+}				t_chunk_group;
+
+typedef struct	s_heap_chunk {
+	struct s_heap_chunk		*prev;
+	struct s_heap_chunk		*next;
+	t_chunk_group			group;
+	size_t					total_size;
+	size_t					free_size;
+	size_t					block_count;
+}				t_heap_chunk;
+
+typedef struct	s_block {
+	struct s_block	*prev;
+	struct s_block	*next;
+	size_t			data_size;
+	t_bool			freed;
+}				t_block;
+
+void 			free(void *ptr);
+void 			*malloc(size_t size);
+void 			*realloc(void *ptr, size_t size);
