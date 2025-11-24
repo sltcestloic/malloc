@@ -12,7 +12,11 @@ INC_DIR =	includes/
 SRC_DIR =	src/
 OBJ_DIR =	objs/
 
-SRC_FILES  =   malloc.c
+SRC_FILES  =   malloc.c \
+				block/fill.c \
+				block/find.c \
+				chunk/type.c \
+				chunk/chunk.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 BINS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
@@ -28,6 +32,8 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)/malloc.h Makefile
 
 $(OBJ_DIR):
 	mkdir -p objs
+	mkdir -p objs/block
+	mkdir -p objs/chunk
 
 clean:
 	rm -rf $(OBJ_DIR)

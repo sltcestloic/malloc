@@ -7,7 +7,16 @@ pthread_mutex_t g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER;
 void *handle_malloc(size_t size) {
 	t_heap_chunk 	*chunk;
 	t_block 		*block;
+	void 			*res;
 	
+	if ((block = fill_available_block(size))) {
+		return BLOCK_SHIFT(block);
+	}
+	if (!(chunk = get_heap_chunk_for_size(size))) {
+		return NULL;
+	}
+	res = append_empty_block(chunk, size);
+	return res;
 }
 
 void *malloc(size_t size) {
