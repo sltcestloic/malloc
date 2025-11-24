@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <sys/mman.h>
+#include <sys/resource.h>
 
 # define TINY_HEAP_ALLOCATION_SIZE (4 * sysconf(_SC_PAGESIZE))
 # define TINY_BLOCK_SIZE (TINY_HEAP_ALLOCATION_SIZE / 128)
@@ -39,7 +41,7 @@ void 			free(void *ptr);
 void 			*malloc(size_t size);
 void 			*realloc(void *ptr, size_t size);
 
-void			setup_block(t_block *block, size_t size);
+void			init_block(t_block *block, size_t size);
 t_block			*fill_available_block(size_t size);
 t_block			*get_last_block(t_block *block);
 void			find_available_block(size_t size,
@@ -48,3 +50,8 @@ void			find_available_block(size_t size,
 t_heap_chunk	*get_heap_chunk_for_size(size_t size);
 void			*append_empty_block(t_heap_chunk *chunk, size_t size);
 t_chunk_type	get_chunk_type_from_block_size(size_t size);
+t_heap_chunk	*create_heap_chunk(t_chunk_type type, size_t block_size);
+size_t			get_chunk_size_from_block_size(size_t size);
+
+void 			ft_putstr(char const *s);
+void 			ft_bzero(void *s, size_t n);

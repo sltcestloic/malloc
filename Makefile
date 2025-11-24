@@ -15,8 +15,14 @@ OBJ_DIR =	objs/
 SRC_FILES  =   malloc.c \
 				block/fill.c \
 				block/find.c \
+				block/init.c \
 				chunk/type.c \
-				chunk/chunk.c
+				chunk/chunk.c \
+				chunk/get.c \
+				chunk/create.c \
+				shared/shared.c \
+				libft/ft_putstr.c \
+				libft/ft_bzero.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 BINS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
@@ -34,6 +40,8 @@ $(OBJ_DIR):
 	mkdir -p objs
 	mkdir -p objs/block
 	mkdir -p objs/chunk
+	mkdir -p objs/shared
+	mkdir -p objs/libft
 
 clean:
 	rm -rf $(OBJ_DIR)

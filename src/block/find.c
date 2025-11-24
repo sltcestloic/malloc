@@ -9,8 +9,10 @@ void	find_available_block(size_t size, t_heap_chunk **res_chunk,
 
 	chunk = g_heap_anchor;
 	type = get_chunk_type_from_block_size(size);
+	ft_putstr("Finding available block\n");
 	while (chunk)
 	{
+		ft_putstr("Checking chunk\n");
 		block = (t_block *)HEAP_SHIFT(chunk);
 		while (chunk->type == type && block)
 		{
@@ -24,6 +26,7 @@ void	find_available_block(size_t size, t_heap_chunk **res_chunk,
 		}
 		chunk = chunk->next;
 	}
+	ft_putstr("No available block found\n");
 	*res_chunk = NULL;
 	*res_block = NULL;
 }

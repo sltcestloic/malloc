@@ -13,7 +13,7 @@ void *append_empty_block(t_heap_chunk *heap, size_t size)
 		new_block =
 			(t_block *)(BLOCK_SHIFT(last_block) + last_block->data_size);
 	}
-	setup_block(new_block, size);
+	init_block(new_block, size);
 	if (heap->block_count)
 	{
 		last_block->next = new_block;
