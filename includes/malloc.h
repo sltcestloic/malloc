@@ -12,16 +12,16 @@
 extern pthread_mutex_t 	g_malloc_mutex;
 extern t_heap_chunk		*g_heap_anchor;
 
-typedef enum	e_chunk_group {
+typedef enum	e_chunk_type {
 	TINY,
 	SMALL,
 	LARGE
-}				t_chunk_group;
+}				t_chunk_type;
 
 typedef struct	s_heap_chunk {
 	struct s_heap_chunk		*prev;
 	struct s_heap_chunk		*next;
-	t_chunk_group			group;
+	t_chunk_type			type;
 	size_t					total_size;
 	size_t					free_size;
 	size_t					block_count;
