@@ -20,6 +20,9 @@ SRC_FILES  =   malloc.c \
 				chunk/chunk.c \
 				chunk/get.c \
 				chunk/create.c \
+				chunk/delete.c \
+				chunk/find_pointer.c \
+				chunk/remove_block.c \
 				shared/shared.c \
 				libft/ft_putstr.c \
 				libft/ft_bzero.c

@@ -12,6 +12,9 @@
 # define HEAP_SHIFT(start) ((void *)start + sizeof(t_heap_chunk))
 # define BLOCK_SHIFT(start) ((void *)start + sizeof(t_block))
 
+# define TRUE 1
+# define FALSE 0
+
 typedef enum	e_chunk_type {
 	TINY,
 	SMALL,
@@ -52,6 +55,10 @@ void			*append_empty_block(t_heap_chunk *chunk, size_t size);
 t_chunk_type	get_chunk_type_from_block_size(size_t size);
 t_heap_chunk	*create_heap_chunk(t_chunk_type type, size_t block_size);
 size_t			get_chunk_size_from_block_size(size_t size);
+void			find_pointer(t_heap_chunk **chunk_ptr, t_block **block_ptr,
+	t_heap_chunk *chunk, void *ptr);
+void 			remove_block_if_last(t_heap_chunk *chunk, t_block *block);
+void			delete_chunk_if_empty(t_heap_chunk *chunk);
 
 void 			ft_putstr(char const *s);
 void 			ft_bzero(void *s, size_t n);
