@@ -10,6 +10,11 @@ void *handle_malloc(size_t size) {
 	void 			*res;
 	
 	ft_putstr("Handling malloc\n");
+	size = (size + 15) & ~15;
+	if (size == 0) {
+		pthread_mutex_unlock(&g_malloc_mutex);
+		return NULL;
+	}
 	if ((block = fill_available_block(size))) {
 		return BLOCK_SHIFT(block);
 	}
@@ -25,11 +30,6 @@ void *handle_malloc(size_t size) {
 void *malloc(size_t size) {
 	void *ptr = NULL;
 	pthread_mutex_lock(&g_malloc_mutex);
-	size = (size + 15) & ~15;
-	if (size == 0) {
-		pthread_mutex_unlock(&g_malloc_mutex);
-		return NULL;
-	}
 	ptr = handle_malloc(size);
 	pthread_mutex_unlock(&g_malloc_mutex);
 	ft_putstr("Malloc complete\n");

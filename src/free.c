@@ -1,11 +1,10 @@
 #include "malloc.h"
 
-void	free(void *ptr)
+void handle_free(void *ptr)
 {
 	t_heap_chunk	*chunk;
 	t_block			*block;
 
-	pthread_mutex_lock(&g_ft_malloc_mutex);
 	chunk = g_heap_anchor;
 	if (!ptr || !chunk)
 		return ;
@@ -16,5 +15,11 @@ void	free(void *ptr)
 		remove_block_if_last(chunk, block);
 		delete_chunk_if_empty(chunk);
 	}
-	pthread_mutex_unlock(&g_ft_malloc_mutex);
+}
+
+void	free(void *ptr)
+{
+	pthread_mutex_lock(&g_malloc_mutex);
+	handle_free(ptr);
+	pthread_mutex_unlock(&g_malloc_mutex);
 }

@@ -13,6 +13,8 @@ SRC_DIR =	src/
 OBJ_DIR =	objs/
 
 SRC_FILES  =   malloc.c \
+				free.c \
+				realloc.c \
 				block/fill.c \
 				block/find.c \
 				block/init.c \
@@ -25,7 +27,9 @@ SRC_FILES  =   malloc.c \
 				chunk/remove_block.c \
 				shared/shared.c \
 				libft/ft_putstr.c \
-				libft/ft_bzero.c
+				libft/ft_bzero.c \
+				libft/ft_memcpy.c \
+				libft/ft_memmove.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 BINS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

@@ -62,3 +62,8 @@ void			delete_chunk_if_empty(t_heap_chunk *chunk);
 
 void 			ft_putstr(char const *s);
 void 			ft_bzero(void *s, size_t n);
+void 			*ft_memcpy(void *dest, const void *src, size_t n);
+void 			*ft_memmove(void *dest, const void *src, size_t n);
+
+void 			*handle_malloc(size_t size);
+void 			handle_free(void *ptr);
