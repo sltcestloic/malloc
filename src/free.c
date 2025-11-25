@@ -12,7 +12,7 @@ void	free(void *ptr)
 	find_pointer(&chunk, &block, chunk, ptr);
 	if (block && chunk)
 	{
-		block->freed = 1;
+		block->freed = TRUE;
 		remove_block_if_last(chunk, block);
 		delete_chunk_if_empty(chunk);
 	}
