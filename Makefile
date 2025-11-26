@@ -18,6 +18,7 @@ SRC_FILES  =   malloc.c \
 				block/fill.c \
 				block/find.c \
 				block/init.c \
+				block/merge.c \
 				chunk/type.c \
 				chunk/chunk.c \
 				chunk/get.c \
@@ -26,10 +27,12 @@ SRC_FILES  =   malloc.c \
 				chunk/find_pointer.c \
 				chunk/remove_block.c \
 				shared/shared.c \
+				shared/show_alloc_mem.c \
 				libft/ft_putstr.c \
 				libft/ft_bzero.c \
 				libft/ft_memcpy.c \
-				libft/ft_memmove.c
+				libft/ft_memmove.c \
+				libft/ft_putnbr.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 BINS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

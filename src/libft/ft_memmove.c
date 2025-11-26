@@ -1,18 +1,20 @@
 #include "malloc.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (!dest && !src)
-		return (NULL);
-	if (src < dest)
-	{
-		while (n)
-		{
-			((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
-			n--;
-		}
-	}
+	char			*dst_str;
+	char			*src_str;
+
+	dst_str = (char *)dst;
+	src_str = (char *)src;
+	if (dst == src)
+		return (dst);
+	if (dst_str < src_str)
+		ft_memcpy(dst_str, src_str, len);
 	else
-		ft_memcpy(dest, src, n);
-	return (dest);
+	{
+		while (len--)
+			dst_str[len] = src_str[len];
+	}
+	return (dst);
 }

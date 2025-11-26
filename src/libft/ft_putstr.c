@@ -7,5 +7,5 @@ void	ft_putstr(char const *s)
 	i = 0;
 	while (s[i])
 		i++;
-	write(1, s, i);
+	write(2, s, i);
 }

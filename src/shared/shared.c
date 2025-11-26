@@ -1,5 +1,5 @@
 #include "malloc.h"
 
-pthread_mutex_t g_ft_malloc_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 t_heap_chunk *g_heap_anchor = NULL;
