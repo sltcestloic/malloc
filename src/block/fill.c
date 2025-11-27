@@ -12,7 +12,7 @@ static void		divide_block(t_block *block, size_t size, t_heap_chunk *chunk)
 	if (block->next)
 		new_size = (char *)block->next - (char *)free_block;
 	else
-		new_size = chunk_end - (char *)block; // remaining chunk size/
+		new_size = chunk_end - (char *)block;
 	init_block(free_block, new_size);
 	free_block->freed = TRUE;
 	free_block->prev = block;
