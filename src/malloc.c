@@ -8,14 +8,14 @@ void *handle_malloc(size_t size) {
 	void 			*res;
 	
 	size = (size + 15) & ~15;
-	ft_putstr("Handling malloc, alligned size: ");
+	ft_putstr("Handling malloc, aligned size: ");
 	ft_putnbr(size);
 	ft_putstr("\n");
 	if (size == 0)
 		return NULL;
 	if ((block = fill_available_block(size)))
 		return BLOCK_SHIFT(block);
-	ft_putstr("Finding heap chunk\n");
+	ft_putstr("Finding chunk to put new block in\n");
 	if (!(chunk = get_heap_chunk_for_size(size)))
 		return NULL;
 	ft_putstr("Appending empty block\n");

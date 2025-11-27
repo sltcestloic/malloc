@@ -4,6 +4,8 @@ void	ft_putnbr(int nb)
 {
 	long	nbr;
 
+	if (!getenv("MALLOC_DEBUG"))
+		return ;
 	nbr = nb;
 	if (nbr < 0)
 	{

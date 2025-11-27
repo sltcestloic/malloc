@@ -5,10 +5,10 @@ void init_block(t_block *block, size_t size)
 {
 	ft_putstr("Initializing block ");
 	char buf[256];
-	int n = snprintf(buf, sizeof(buf),
+	snprintf(buf, sizeof(buf),
 		"%p",
 		(void*)block);
-	write(2, buf, n);
+	ft_putstr(buf);
 	ft_putstr(" with size ");
 	ft_putnbr(size);
 	ft_putstr("\n");

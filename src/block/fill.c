@@ -19,10 +19,10 @@ static void		divide_block(t_block *block, size_t size, t_heap_chunk *chunk)
 	free_block->next = block->next;
 	ft_putstr("After init block ");
 	char buf[256];
-	int n = snprintf(buf, sizeof(buf),
+	snprintf(buf, sizeof(buf),
 		"%p",
 		(void*)free_block);
-	write(2, buf, n);
+	ft_putstr(buf);
 	ft_putstr(" size=");
 	ft_putnbr(size);
 	ft_putstr("\n");

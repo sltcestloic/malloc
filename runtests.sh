@@ -1,11 +1,15 @@
 #!/bin/sh
 
-export LD_PRELOAD=$PWD/libft_malloc.so
 for file in test/test*.c
 do
-	gcc $file -L. -lft_malloc -o ${file%.c}
+	gcc -o ${file%.c} $file 
 done
 
 
+export LD_PRELOAD=$PWD/libft_malloc.so
 
-./test0
+
+for file in test/test*.c
+do
+	./${file%.c}
+done
