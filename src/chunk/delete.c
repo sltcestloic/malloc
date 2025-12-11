@@ -33,6 +33,5 @@ void delete_chunk_if_empty(t_heap_chunk *chunk)
 		if (chunk == g_heap_anchor)
 			g_heap_anchor = chunk->next;
 		munmap(chunk, chunk->total_size);
-		ft_putstr("Chunk deleted\n");
 	}
 }

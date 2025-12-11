@@ -25,6 +25,5 @@ t_heap_chunk *create_heap_chunk(t_chunk_type type, size_t block_size)
 	chunk->type = type;
 	chunk->total_size = heap_size;
 	chunk->free_size = heap_size - sizeof(t_heap_chunk);
-	ft_putstr("Heap chunk created\n");
 	return (chunk);
 }

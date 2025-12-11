@@ -14,7 +14,6 @@ void *append_empty_block(t_heap_chunk *heap, size_t size)
 		new_block =
 			(t_block *)(BLOCK_SHIFT(last_block) + last_block->data_size);
 	}
-	ft_putstr("init_block called by append_empty_block\n");
 	init_block(new_block, size);
 	if (heap->block_count)
 	{
@@ -23,6 +22,5 @@ void *append_empty_block(t_heap_chunk *heap, size_t size)
 	}
 	heap->block_count++;
 	heap->free_size -= (new_block->data_size + sizeof(t_block));
-	ft_putstr("Appended new block to chunk\n");
 	return ((void *)BLOCK_SHIFT(new_block));
 }
