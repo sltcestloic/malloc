@@ -40,34 +40,34 @@ typedef struct	s_block {
 extern pthread_mutex_t 	g_malloc_mutex;
 extern t_heap_chunk		*g_heap_anchor;
 
-void 			free(void *ptr);
-void 			*malloc(size_t size);
-void 			*realloc(void *ptr, size_t size);
+void 			      free(void *ptr);
+void 			      *malloc(size_t size);
+void 			      *realloc(void *ptr, size_t size);
+      
+void 			      show_alloc_mem();
 
-void 			show_alloc_mem();
-
-void			init_block(t_block *block, size_t size);
-t_block			*fill_available_block(size_t size);
-t_block			*get_last_block(t_block *block);
-void			find_available_block(size_t size,
+void			      init_block(t_block *block, size_t size);
+t_block			    *fill_available_block(size_t size);
+t_block			    *get_last_block(t_block *block);
+void			      find_available_block(size_t size,
 	t_heap_chunk **res_chunk, t_block **res_block);
-t_block			*merge_block(t_heap_chunk *chunk, t_block *block);
+t_block			    *merge_block(t_heap_chunk *chunk, t_block *block);
 
-t_heap_chunk	*get_heap_chunk_for_size(size_t size);
-void			*append_empty_block(t_heap_chunk *chunk, size_t size);
-t_chunk_type	get_chunk_type_from_block_size(size_t size);
-t_heap_chunk	*create_heap_chunk(t_chunk_type type, size_t block_size);
-size_t			get_chunk_size_from_block_size(size_t size);
-void			find_pointer(t_heap_chunk **chunk_ptr, t_block **block_ptr,
+t_heap_chunk	  *get_heap_chunk_for_size(size_t size);
+void			      *append_empty_block(t_heap_chunk *chunk, size_t size);
+t_chunk_type	  get_chunk_type_from_block_size(size_t size);
+t_heap_chunk	  *create_heap_chunk(t_chunk_type type, size_t block_size);
+size_t			    get_chunk_size_from_block_size(size_t size);
+void			      find_pointer(t_heap_chunk **chunk_ptr, t_block **block_ptr,
 	t_heap_chunk *chunk, void *ptr);
-void 			remove_block_if_last(t_heap_chunk *chunk, t_block *block);
-void			delete_chunk_if_empty(t_heap_chunk *chunk);
+void 		      	remove_block_if_last(t_heap_chunk *chunk, t_block *block);
+void			      elete_chunk_if_empty(t_heap_chunk *chunk);
 
-void 			ft_putstr(char const *s);
-void 			ft_bzero(void *s, size_t n);
-void 			*ft_memcpy(void *dest, const void *src, size_t n);
-void 			*ft_memmove(void *dest, const void *src, size_t n);
-void 			ft_putnbr(int nb);
+void 			      ft_putstr(char const *s);
+void 			      ft_bzero(void *s, size_t n);
+void 			      *ft_memcpy(void *dest, const void *src, size_t n);
+void 			      *ft_memmove(void *dest, const void *src, size_t n);
+void 			      ft_putnbr(int nb);
 
-void 			*handle_malloc(size_t size);
-void 			handle_free(void *ptr);
+void 			      *handle_malloc(size_t size);
+void 			      handle_free(void *ptr);
